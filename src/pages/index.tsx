@@ -4,6 +4,7 @@ import { Cog6ToothIcon } from '@heroicons/react/24/solid'
 import format from 'date-fns/format'
 import add from 'date-fns/add'
 import { getDay } from 'date-fns'
+import Balancer from 'react-wrap-balancer'
 
 import Page from '@/components/page'
 import Modal from '@/components/modal'
@@ -28,7 +29,6 @@ const Settings = ({
   useEffect(() => {
     setDay(midweekDayNumber)
   }, [midweekDayNumber])
-  console.log({ midweekDayNumber, day })
   return (
     <form className='space-y-3'>
       <label>when is your midweek meeting?</label>
@@ -60,6 +60,25 @@ const Settings = ({
     </form>
   )
 }
+
+const ExternalLink = ({
+  href,
+  children,
+}: {
+  href: string
+  children: React.ReactNode
+}) => (
+  <a
+    href={href}
+    target='_blank'
+    rel='noopener noreferrer'
+    className='group w-full cursor-pointer rounded-lg border-none bg-cb-dark-blue text-center text-lg'
+  >
+    <span className='block translate-y-[-4px] transform rounded-lg bg-[#5a3e84] p-3 text-lg duration-[600ms] ease-[cubic-bezier(.3,.7,.4,1)] hover:ease-[cubic-bezier(.3,.7,.4,1.5)] group-hover:translate-y-[-6px] group-hover:duration-[250ms] group-active:translate-y-[-2px] group-active:duration-[34ms]'>
+      <Balancer>{children}</Balancer>
+    </span>
+  </a>
+)
 
 const Home: NextPage = () => {
   const [midweekDayNumber, setMidweekDayNumber] = useLocalStorage<
@@ -127,40 +146,15 @@ const Home: NextPage = () => {
           <p>Midweek Day: {midweekDay ?? 'not set'}</p>
           <h2>{week}</h2>
           {!finishedMidweek && (
-            <a
-              href={mwUrl}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='group w-full cursor-pointer rounded-lg border-none bg-cb-dark-blue text-center text-lg'
-            >
-              <span className='block translate-y-[-4px] transform rounded-lg bg-[#5a3e84] p-3 text-lg duration-[600ms] ease-[cubic-bezier(.3,.7,.4,1)] hover:ease-[cubic-bezier(.3,.7,.4,1.5)] group-hover:translate-y-[-6px] group-hover:duration-[250ms] group-active:translate-y-[-2px] group-active:duration-[34ms]'>
-                {mwTitle}
-              </span>
-            </a>
+            <ExternalLink href={mwUrl ?? ''}>{mwTitle}</ExternalLink>
           )}
-          <a
-            href={wtUrl}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='group w-full cursor-pointer rounded-lg border-none bg-cb-dark-blue text-center text-lg'
-          >
-            <span className='block translate-y-[-4px] transform rounded-lg bg-[#5a3e84] p-3 text-lg duration-[600ms] ease-[cubic-bezier(.3,.7,.4,1)] hover:ease-[cubic-bezier(.3,.7,.4,1.5)] group-hover:translate-y-[-6px] group-hover:duration-[250ms] group-active:translate-y-[-2px] group-active:duration-[34ms]'>
-              {wtTitle}
-            </span>
-          </a>
+          <ExternalLink href={wtUrl ?? ''}>{wtTitle}</ExternalLink>
           {finishedMidweek && (
             <>
               <h2>{nextWeek}</h2>
-              <a
-                href={mwUrlNextWeek}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='group w-full cursor-pointer rounded-lg border-none bg-cb-dark-blue text-center text-lg'
-              >
-                <span className='block translate-y-[-4px] transform rounded-lg bg-[#5a3e84] p-3 text-lg duration-[600ms] ease-[cubic-bezier(.3,.7,.4,1)] hover:ease-[cubic-bezier(.3,.7,.4,1.5)] group-hover:translate-y-[-6px] group-hover:duration-[250ms] group-active:translate-y-[-2px] group-active:duration-[34ms]'>
-                  {mwTitleNextWeek}
-                </span>
-              </a>
+              <ExternalLink href={mwUrlNextWeek ?? ''}>
+                {mwTitleNextWeek}
+              </ExternalLink>
             </>
           )}
         </div>
