@@ -25,19 +25,11 @@ interface MWTResponse {
 }
 
 export const swordRouter = createTRPCRouter({
-  dt: publicProcedure
-    .input(z.object({ date: z.string() }))
-    .query(async ({ input }) => {
-      const data = await fetcher<DTResponse>(
-        `https://notes.dlopez.app/api/sword/dt/${input.date}`
-      )
-      return data
-    }),
   mwt: publicProcedure
     .input(z.object({ date: z.string() }))
     .query(async ({ input }) => {
       const data = await fetcher<MWTResponse>(
-        `https://notes.dlopez.app/api/sword/mwt/${input.date}`
+        `https://api.dlopez.app/api/sword/mwt/${input.date}`
       )
       return data
     }),
