@@ -148,7 +148,7 @@ const Home: NextPage = () => {
           {!finishedMidweek && (
             <ExternalLink href={mwUrl ?? ''}>{mwTitle}</ExternalLink>
           )}
-          <ExternalLink href={wtUrl ?? ''}>{wtTitle}</ExternalLink>
+          {wtTitle && <ExternalLink href={wtUrl ?? ''}>{wtTitle}</ExternalLink>}
           {finishedMidweek && (
             <>
               <h2>{nextWeek}</h2>
