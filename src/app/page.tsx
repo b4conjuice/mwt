@@ -10,6 +10,8 @@ import Info from './_components/info'
 import fetcher from '@/lib/fetcher'
 import type { MWTResponse } from '@/lib/types'
 
+export const dynamic = 'force-dynamic'
+
 async function fetchMWT(date: string) {
   const data = await fetcher<MWTResponse>(
     `https://api.dlopez.app/api/sword/mwt/${date}`
