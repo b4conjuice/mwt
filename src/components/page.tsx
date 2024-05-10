@@ -1,4 +1,4 @@
-import Meta from '@/components/meta'
+// import Meta from '@/components/meta'
 // import Header from '@/components/header'
 
 const DEFAULT_TITLE = 'mwt'
@@ -11,9 +11,9 @@ const Page = ({
   children: React.ReactNode
 }) => (
   <div className='flex min-h-screen flex-col bg-cb-dark-blue text-cb-white'>
-    <Meta
+    {/* <Meta
       title={title === DEFAULT_TITLE ? title : `${title} - ${DEFAULT_TITLE}`}
-    />
+    /> */}
     {/* <Header title={DEFAULT_TITLE} /> */}
     {children}
   </div>
