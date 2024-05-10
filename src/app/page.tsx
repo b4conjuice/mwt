@@ -1,6 +1,7 @@
 import format from 'date-fns/format'
 import add from 'date-fns/add'
 import { getDay } from 'date-fns'
+import { formatInTimeZone } from 'date-fns-tz'
 
 import Page from '@/components/page'
 import Main from '@/components/design/main'
@@ -19,11 +20,17 @@ async function fetchMWT(date: string) {
   return data
 }
 
+const timezone = 'America/Los_Angeles'
+
 export default async function Home() {
   const now = new Date()
-  const todayText = format(now, 'MMM dd, yyyy')
-  const todayDate = format(now, 'yyyy-w')
-  const nextWeekDate = format(add(now, { weeks: 1 }), 'yyyy-w')
+  const todayText = formatInTimeZone(now, timezone, 'MMM dd, yyyy')
+  const todayDate = formatInTimeZone(now, timezone, 'yyyy-w')
+  const nextWeekDate = formatInTimeZone(
+    add(now, { weeks: 1 }),
+    'America/Los_Angeles',
+    'yyyy-w'
+  )
   const todaysDayOfWeek = getDay(now)
 
   const thisWeekData = await fetchMWT(todayDate)
