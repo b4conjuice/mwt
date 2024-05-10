@@ -1,6 +1,4 @@
-import format from 'date-fns/format'
-import add from 'date-fns/add'
-import { getDay } from 'date-fns'
+import { getDay, add } from 'date-fns'
 import { formatInTimeZone } from 'date-fns-tz'
 
 import Page from '@/components/page'

@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import { type NextPage } from 'next'
 import { Cog6ToothIcon } from '@heroicons/react/24/solid'
-import format from 'date-fns/format'
-import add from 'date-fns/add'
-import { getDay } from 'date-fns'
+import { getDay, format, add } from 'date-fns'
 import Balancer from 'react-wrap-balancer'
 
 import Page from '@/components/page'
