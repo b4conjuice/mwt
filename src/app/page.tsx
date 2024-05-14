@@ -22,7 +22,7 @@ const timezone = 'America/Los_Angeles'
 
 export default async function Home() {
   const now = new Date()
-  const todayText = formatInTimeZone(now, timezone, 'MMM dd, yyyy')
+  const todayText = formatInTimeZone(now, timezone, 'MMM d, yyyy')
   const todayDate = formatInTimeZone(now, timezone, 'yyyy-w')
   const nextWeekDate = formatInTimeZone(
     add(now, { weeks: 1 }),
