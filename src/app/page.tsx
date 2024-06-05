@@ -8,6 +8,7 @@ import SettingsButton from './_components/settings-button'
 import Info from './_components/info'
 import fetcher from '@/lib/fetcher'
 import type { MWTResponse } from '@/lib/types'
+import Footer from './_components/footer'
 
 export const dynamic = 'force-dynamic'
 
@@ -71,6 +72,7 @@ export default async function Home() {
           />
         </div>
       </Main>
+      <Footer />
     </Page>
   )
 }

@@ -2,23 +2,35 @@ import type { Dispatch, SetStateAction } from 'react'
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
+import classNames from 'classnames'
 
 export default function Modal({
   isOpen,
   setIsOpen,
   title,
   children,
+  dialogClassName,
+  outerContainerClassName,
+  dialogPanelClassName,
+  innerContainerClassName,
 }: {
   isOpen: boolean
   setIsOpen: Dispatch<SetStateAction<boolean>>
   title?: string
   children: React.ReactNode
+  dialogClassName?: string
+  outerContainerClassName?: string
+  dialogPanelClassName?: string
+  innerContainerClassName?: string
 }) {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
         onClose={setIsOpen}
-        className='fixed inset-0 flex flex-col justify-end overflow-y-auto p-4'
+        className={classNames(
+          dialogClassName ??
+            'fixed inset-0 flex flex-col justify-end overflow-y-auto p-4'
+        )}
       >
         <Transition.Child
           enter='duration-300 ease-out'
@@ -31,6 +43,7 @@ export default function Modal({
           <div className='fixed inset-0 bg-cobalt/90' />
         </Transition.Child>
         <Transition.Child
+          className={classNames(outerContainerClassName)}
           enter='duration-300 ease-out'
           enterFrom='opacity-0 scale-95'
           enterTo='opacity-100 scale-100'
@@ -38,7 +51,12 @@ export default function Modal({
           leaveFrom='opacity-100 scale-100'
           leaveTo='opacity-0 scale-95'
         >
-          <Dialog.Panel className='relative z-10 rounded-lg p-4 dark:bg-cb-dusty-blue dark:text-gray-100'>
+          <Dialog.Panel
+            className={classNames(
+              dialogPanelClassName ??
+                'relative z-10 rounded-lg p-4 dark:bg-cb-dusty-blue dark:text-gray-100'
+            )}
+          >
             <button
               type='button'
               onClick={() => setIsOpen(false)}
@@ -46,7 +64,7 @@ export default function Modal({
             >
               <XMarkIcon className='h-6 w-6 text-cb-yellow' />
             </button>
-            <div className='space-y-3'>
+            <div className={classNames(innerContainerClassName ?? 'space-y-3')}>
               {title && (
                 <Dialog.Title className='mt-4 text-center text-xl'>
                   {title}
