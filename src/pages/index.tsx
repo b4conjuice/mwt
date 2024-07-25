@@ -11,6 +11,7 @@ import Title from '@/components/design/title'
 import { api } from '@/lib/api'
 import useLocalStorage from '@/lib/useLocalStorage'
 import Button from '@/components/design/button'
+import Footer from '@/app/_components/footer'
 
 // day of week
 // 0 = sunday
@@ -163,6 +164,7 @@ const Home: NextPage = () => {
           />
         </Modal>
       </Main>
+      <Footer />
     </Page>
   )
 }
