@@ -20,10 +20,9 @@ export default function FooterComponent() {
       <Modal
         isOpen={isNoteModalOpen}
         setIsOpen={setIsNoteModalOpen}
-        title='notes'
-        dialogClassName='fixed inset-0 flex flex-col overflow-y-auto p-4'
+        dialogClassName='fixed inset-0 flex flex-col overflow-y-auto'
         outerContainerClassName='flex-grow flex flex-col'
-        dialogPanelClassName='relative z-10 rounded-lg p-4 dark:bg-cb-dusty-blue dark:text-gray-100 flex-grow flex flex-col'
+        dialogPanelClassName='relative z-10 rounded-lg dark:bg-cb-dusty-blue dark:text-gray-100 flex-grow flex flex-col'
         innerContainerClassName='space-y-3 flex-grow flex flex-col'
       >
         <textarea
