@@ -9,7 +9,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const {
-    query: { mw, mwDay },
+    query: { mw, mwDay, debug },
   } = req
 
   const now = new Date()
@@ -42,6 +42,15 @@ export default async function handler(
 
   if (!url) {
     res.status(404).json({ message: 'not found', finishedMidweek })
+  } else if (Boolean(debug)) {
+    res.json({
+      mw,
+      mwDay,
+      now,
+      todaysDayOfWeek,
+      finishedMidweek,
+      url,
+    })
   } else {
     res.redirect(301, url)
   }
