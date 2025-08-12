@@ -12,6 +12,7 @@ import { api } from '@/lib/api'
 import useLocalStorage from '@/lib/useLocalStorage'
 import Button from '@/components/design/button'
 import Footer from '@/app/_components/footer'
+import MWTButtons from '@/components/mwt'
 
 // day of week
 // 0 = sunday
@@ -156,6 +157,10 @@ const Home: NextPage = () => {
               </ExternalLink>
             </>
           )}
+          <hr />
+          <div className='flex w-full flex-col space-y-4'>
+            <MWTButtons now={now} midweekDayNumber={midweekDayNumber} />
+          </div>
         </div>
         <Modal isOpen={showModal} setIsOpen={setShowModal} title='settings'>
           <Settings
